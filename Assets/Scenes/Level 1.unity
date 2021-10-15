@@ -218,23 +218,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &184256793 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6325630000407717027, guid: 6048661163dcd5045ac1595119a8f1dc, type: 3}
-  m_PrefabInstance: {fileID: 8854585202200922516}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &184256801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184256793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4b1e5990f296814caf5ae9cefcd2f3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &224518261
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,14 +660,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 184256795, guid: 6048661163dcd5045ac1595119a8f1dc, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 577e6a8393fd9394fa1cc9c167b3b73c, type: 3}
-    - target: {fileID: 184256795, guid: 6048661163dcd5045ac1595119a8f1dc, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 615618249830973482, guid: 6048661163dcd5045ac1595119a8f1dc, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -5,8 +5,21 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float levelLoadDelay = 1f;
+    [SerializeField] AudioClip crashSFX;
+    [SerializeField] AudioClip successSFX;
+
+    AudioSource audioSource;
+
+    bool isTransitioning = false;
+    
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();    
+    }
+
     void OnCollisionEnter(Collision other)
     {
+        if (isTransitioning) return;
         switch (other.gameObject.tag)
         {
             case "Respawn":
@@ -23,7 +36,9 @@ public class CollisionHandler : MonoBehaviour
 
     void ProcessSuccessSequence()
     {
-        // todo add SFX upon collision
+        isTransitioning = true;
+        audioSource.PlayOneShot(successSFX);
+
         // todo add particle effect upon collision
         GetComponent<Movement>().enabled = false;
         Invoke("LoadNextLevel", levelLoadDelay);
@@ -31,7 +46,8 @@ public class CollisionHandler : MonoBehaviour
 
     void ProcessCrashSequence()
     {
-        // todo add SFX upon collision
+        isTransitioning = true;
+        audioSource.PlayOneShot(crashSFX);
         // todo add particle effect upon collision
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel", levelLoadDelay);
