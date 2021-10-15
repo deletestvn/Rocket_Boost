@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody rb;
+    AudioSource audioSource;
     Vector3 originalPos;
     Quaternion originalRot;
     [SerializeField] float thrustSpeed = 1000.0f;
@@ -13,6 +14,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         originalPos = gameObject.transform.position;
         originalRot = gameObject.transform.rotation;
     }
@@ -29,9 +31,10 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            Debug.Log("Boost!!!");
             rb.AddRelativeForce(Vector3.up * thrustSpeed * Time.deltaTime);
+            if (!audioSource.isPlaying) audioSource.Play();
         }
+        else audioSource.Stop();
     }
 
     void ProcessRotation()
