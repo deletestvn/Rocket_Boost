@@ -6,7 +6,13 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] float thrustSpeed = 1000.0f;
     [SerializeField] float rotateSpeed = 60.0f;
-    [SerializeField] AudioClip mainEngine;
+    [SerializeField] AudioClip engineSFX;
+
+    [SerializeField] ParticleSystem engineVFX;
+    [SerializeField] ParticleSystem leftThruster1VFX;
+    [SerializeField] ParticleSystem leftThruster2VFX;
+    [SerializeField] ParticleSystem rightThruster1VFX;
+    [SerializeField] ParticleSystem rightThruster2VFX;
 
     Rigidbody rb;
     AudioSource audioSource;
@@ -35,9 +41,14 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             rb.AddRelativeForce(Vector3.up * thrustSpeed * Time.deltaTime);
-            if (!audioSource.isPlaying) audioSource.PlayOneShot(mainEngine);
+            if (!audioSource.isPlaying) audioSource.PlayOneShot(engineSFX);
+            if (!engineVFX.isPlaying) engineVFX.Play();
         }
-        else audioSource.Stop();
+        else
+        {
+            audioSource.Stop();
+            engineVFX.Stop();
+        }
     }
 
     void ProcessRotation()
@@ -45,11 +56,22 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             ApplyRotation(rotateSpeed);
+            if(!rightThruster1VFX.isPlaying) rightThruster1VFX.Play();
+            if(!rightThruster2VFX.isPlaying) rightThruster2VFX.Play();
         }
         else if (Input.GetKey(KeyCode.D))
         {
             ApplyRotation(-rotateSpeed);
-        }   
+            if(!leftThruster1VFX.isPlaying) leftThruster1VFX.Play();
+            if(!leftThruster2VFX.isPlaying) leftThruster2VFX.Play();
+        }
+        else
+        {
+            rightThruster1VFX.Stop();
+            rightThruster2VFX.Stop();
+            leftThruster1VFX.Stop();
+            leftThruster2VFX.Stop();
+        }
     }
 
     void ApplyRotation(float rotation)

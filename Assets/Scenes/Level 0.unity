@@ -704,9 +704,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2632721278725351210, guid: 6048661163dcd5045ac1595119a8f1dc, type: 3}
+      propertyPath: m_Name
+      value: Thruster M
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725286802282546183, guid: 6048661163dcd5045ac1595119a8f1dc, type: 3}
+      propertyPath: m_Name
+      value: Thruster L2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298523727565362488, guid: 6048661163dcd5045ac1595119a8f1dc, type: 3}
+      propertyPath: m_Name
+      value: Thruster R1
+      objectReference: {fileID: 0}
     - target: {fileID: 6325630000407717027, guid: 6048661163dcd5045ac1595119a8f1dc, type: 3}
       propertyPath: m_Name
       value: Rocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416830228728504152, guid: 6048661163dcd5045ac1595119a8f1dc, type: 3}
+      propertyPath: m_Name
+      value: Thruster R2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8108988091905761494, guid: 6048661163dcd5045ac1595119a8f1dc, type: 3}
+      propertyPath: m_Name
+      value: Thruster L1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6048661163dcd5045ac1595119a8f1dc, type: 3}
