@@ -37,6 +37,7 @@ public class CollisionHandler : MonoBehaviour
     void ProcessSuccessSequence()
     {
         isTransitioning = true;
+        audioSource.Stop();
         audioSource.PlayOneShot(successSFX);
 
         // todo add particle effect upon collision
@@ -47,7 +48,9 @@ public class CollisionHandler : MonoBehaviour
     void ProcessCrashSequence()
     {
         isTransitioning = true;
+        audioSource.Stop();
         audioSource.PlayOneShot(crashSFX);
+
         // todo add particle effect upon collision
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel", levelLoadDelay);
