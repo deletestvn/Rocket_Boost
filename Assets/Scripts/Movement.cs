@@ -38,40 +38,50 @@ public class Movement : MonoBehaviour
 
     void ProcessThrust()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            rb.AddRelativeForce(Vector3.up * thrustSpeed * Time.deltaTime);
-            if (!audioSource.isPlaying) audioSource.PlayOneShot(engineSFX);
-            if (!engineVFX.isPlaying) engineVFX.Play();
-        }
-        else
-        {
-            audioSource.Stop();
-            engineVFX.Stop();
-        }
+        if (Input.GetKey(KeyCode.W)) StartThrust();
+        else StopThrust();
+    }
+
+    void StartThrust()
+    {
+        rb.AddRelativeForce(Vector3.up * thrustSpeed * Time.deltaTime);
+        if (!audioSource.isPlaying) audioSource.PlayOneShot(engineSFX);
+        if (!engineVFX.isPlaying) engineVFX.Play();
+    }
+
+    void StopThrust()
+    {
+        audioSource.Stop();
+        engineVFX.Stop();
     }
 
     void ProcessRotation()
     {
-        if (Input.GetKey(KeyCode.A))
-        {
-            ApplyRotation(rotateSpeed);
-            if(!rightThruster1VFX.isPlaying) rightThruster1VFX.Play();
-            if(!rightThruster2VFX.isPlaying) rightThruster2VFX.Play();
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            ApplyRotation(-rotateSpeed);
-            if(!leftThruster1VFX.isPlaying) leftThruster1VFX.Play();
-            if(!leftThruster2VFX.isPlaying) leftThruster2VFX.Play();
-        }
-        else
-        {
-            rightThruster1VFX.Stop();
-            rightThruster2VFX.Stop();
-            leftThruster1VFX.Stop();
-            leftThruster2VFX.Stop();
-        }
+        if (Input.GetKey(KeyCode.A)) RotateLeft();
+        else if (Input.GetKey(KeyCode.D)) RotateRight();
+        else StopRotation();
+    }
+
+    void RotateLeft()
+    {
+        ApplyRotation(rotateSpeed);
+        if (!rightThruster1VFX.isPlaying) rightThruster1VFX.Play();
+        if (!rightThruster2VFX.isPlaying) rightThruster2VFX.Play();
+    }
+
+    void RotateRight()
+    {
+        ApplyRotation(-rotateSpeed);
+        if (!leftThruster1VFX.isPlaying) leftThruster1VFX.Play();
+        if (!leftThruster2VFX.isPlaying) leftThruster2VFX.Play();
+    }
+
+    void StopRotation()
+    {
+        rightThruster1VFX.Stop();
+        rightThruster2VFX.Stop();
+        leftThruster1VFX.Stop();
+        leftThruster2VFX.Stop();
     }
 
     void ApplyRotation(float rotation)
