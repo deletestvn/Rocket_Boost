@@ -14,15 +14,21 @@ public class CollisionHandler : MonoBehaviour
     AudioSource audioSource;
 
     bool isTransitioning = false;
+    bool isCollisionDisabled = false;
     
     void Start()
     {
         audioSource = GetComponent<AudioSource>();    
     }
 
+    void Update()
+    {
+        DebugListener();
+    }
+
     void OnCollisionEnter(Collision other)
     {
-        if (isTransitioning) return;
+        if (isTransitioning || isCollisionDisabled) return;
         switch (other.gameObject.tag)
         {
             case "Respawn":
@@ -77,5 +83,18 @@ public class CollisionHandler : MonoBehaviour
         int maxSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
         int nextSceneIndex = currentSceneIndex < maxSceneIndex ? currentSceneIndex + 1 : 0;
         SceneManager.LoadScene(nextSceneIndex);
+    }
+
+    void DebugListener()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            isCollisionDisabled = !isCollisionDisabled;
+            
+        }
     }
 }
